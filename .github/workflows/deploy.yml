@@ -1,0 +1,31 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main  # Ganti dengan branch yang ingin Anda trigger deploy-nya
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_KEY }}
+        port: 22
+        script: |
+          # Login ke VPS dan tarik perubahan terbaru dari GitHub
+          cd /home/mujahidramdhani/apps/express-mongo
+          git pull origin main  # Ambil perubahan terbaru dari branch main
+
+           # Bangun ulang container dan jalankan Docker Compose
+          docker-compose down  # Matikan container yang berjalan
+          
+          docker-compose up --build -d  # Bangun ulang dan jalankan container di background

@@ -1,0 +1,30 @@
+###
+POST http://localhost:3000/items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Mujahid Ramdhani",
+  "gender": "Male"
+}
+
+###
+GET  http://localhost:3000/items
+Content-Type: application/json
+Accept: application/json
+
+###
+DELETE   http://localhost:3000/items/677d403bbcb28c5e6815a8bd
+Content-Type: application/json
+Accept: application/json
+
+
+###
+POST http://34.124.147.75:3000/items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Mujahid Ramdhani 4",
+  "gender": "Male"
+}
