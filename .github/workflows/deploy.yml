@@ -22,7 +22,7 @@ jobs:
         port: 22
         script: |
           # Login ke VPS dan tarik perubahan terbaru dari GitHub
-          cd /home/mujahidramdhani/apps/express-mongo
+          cd /home/mujahidramdhani/apps/express-mongo-compose
           git pull origin main  # Ambil perubahan terbaru dari branch main
 
            # Bangun ulang container dan jalankan Docker Compose
